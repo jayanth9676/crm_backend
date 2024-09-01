@@ -3,7 +3,7 @@ package middlewares
 import (
     "github.com/gin-gonic/gin"
     "net/http"
-    "your_project/utils"
+    "crm_backend/utils"
 )
 
 func RoleCheck(allowedRoles ...string) gin.HandlerFunc {

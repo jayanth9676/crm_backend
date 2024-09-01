@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"your_project/controllers"
-	"your_project/middlewares"
+	"crm_backend/controllers"
+	"crm_backend/middlewares"
 )
 
 func SetupRouter() *gin.Engine {

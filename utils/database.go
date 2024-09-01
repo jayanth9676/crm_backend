@@ -33,5 +33,5 @@ func InitDatabase() {
 
 // GetCollection returns a handle to the specified collection
 func GetCollection(collectionName string) *mongo.Collection {
-    return client.Database("crm_database").Collection(collectionName)
+    return client.Database("crm_backend").Collection(collectionName)
 }

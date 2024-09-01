@@ -4,8 +4,8 @@ import (
     "net/http"
 
     "github.com/gin-gonic/gin"
-    "your_project/models"
-    "your_project/utils"
+    "crm_backend/models"
+    "crm_backend/utils"
 )
 
 // Login handles user authentication

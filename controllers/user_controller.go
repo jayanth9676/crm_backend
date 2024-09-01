@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"your_project/models"
-	"your_project/utils"
+	"crm_backend/models"
+	"crm_backend/utils"
 )
 
 func CreateUser(c *gin.Context) {
@@ -24,4 +24,4 @@ func CreateUser(c *gin.Context) {
 	c.JSON(http.StatusCreated, user)
 }
 
-// Implement GetUser, UpdateUser, and DeleteUser functions similarly
+// Implement GetUser, UpdateUser, DeleteUser similarly

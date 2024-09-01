@@ -11,5 +11,4 @@ type User struct {
 	Company     string             `bson:"company,omitempty" json:"company,omitempty"`
 	Status      string             `bson:"status" json:"status"`
 	Notes       string             `bson:"notes,omitempty" json:"notes,omitempty"`
-	Role        string             `bson:"role" json:"role"` // For role-based access control
 }

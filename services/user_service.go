@@ -1,4 +1,4 @@
-package utils
+package services
 
 import (
     "context"
@@ -7,57 +7,58 @@ import (
 
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/bson/primitive"
-    "models"
+    "crm_backend/models"
+    "crm_backend/utils"
 )
 
-// CreateCustomer creates a new customer in the database
-func CreateCustomer(customer *models.Customer) error {
-    collection := GetCollection("customers")
+// CreateUser creates a new user in the database
+func CreateUser(user *models.User) error {
+    collection := utils.GetCollection("users")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 
-    _, err := collection.InsertOne(ctx, customer)
+    _, err := collection.InsertOne(ctx, user)
     return err
 }
 
-// GetCustomerByID retrieves a customer by their ID
-func GetCustomerByID(id string) (*models.Customer, error) {
-    collection := GetCollection("customers")
+// GetUserByID retrieves a user by their ID
+func GetUserByID(id string) (*models.User, error) {
+    collection := utils.GetCollection("users")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 
-    var customer models.Customer
+    var user models.User
     objID, _ := primitive.ObjectIDFromHex(id)
-    err := collection.FindOne(ctx, bson.M{"_id": objID}).Decode(&customer)
+    err := collection.FindOne(ctx, bson.M{"_id": objID}).Decode(&user)
     if err != nil {
         return nil, err
     }
-    return &customer, nil
+    return &user, nil
 }
 
-// UpdateCustomer updates an existing customer in the database
-func UpdateCustomer(id string, updatedCustomer *models.Customer) error {
-    collection := GetCollection("customers")
+// UpdateUser updates an existing user in the database
+func UpdateUser(id string, updatedUser *models.User) error {
+    collection := utils.GetCollection("users")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 
     objID, _ := primitive.ObjectIDFromHex(id)
     filter := bson.M{"_id": objID}
-    update := bson.M{"$set": updatedCustomer}
+    update := bson.M{"$set": updatedUser}
 
     result, err := collection.UpdateOne(ctx, filter, update)
     if err != nil {
         return err
     }
     if result.MatchedCount == 0 {
-        return errors.New("no customer found with the given ID")
+        return errors.New("no user found with the given ID")
     }
     return nil
 }
 
-// DeleteCustomer deletes a customer from the database
-func DeleteCustomer(id string) error {
-    collection := GetCollection("customers")
+// DeleteUser deletes a user from the database
+func DeleteUser(id string) error {
+    collection := utils.GetCollection("users")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 
@@ -69,7 +70,7 @@ func DeleteCustomer(id string) error {
         return err
     }
     if result.DeletedCount == 0 {
-        return errors.New("no customer found with the given ID")
+        return errors.New("no user found with the given ID")
     }
     return nil
 }

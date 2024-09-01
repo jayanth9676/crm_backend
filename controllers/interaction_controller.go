@@ -3,8 +3,8 @@ package controllers
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "your_project/models"
-    "your_project/utils"
+    "crm_backend/models"
+    "crm_backend/utils"
 )
 
 func RaiseTicket(c *gin.Context) {
@@ -15,7 +15,6 @@ func RaiseTicket(c *gin.Context) {
     }
     interaction.Type = "ticket"
     interaction.Status = "unresolved"
-    // Save interaction to the database
     if err := utils.CreateInteraction(&interaction); err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not create ticket"})
         return

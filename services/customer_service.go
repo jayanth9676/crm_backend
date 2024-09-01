@@ -1,4 +1,4 @@
-package utils
+package services
 
 import (
     "context"
@@ -7,12 +7,13 @@ import (
 
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/bson/primitive"
-    "models"
+    "crm_backend/models"
+    "crm_backend/utils"
 )
 
 // CreateCustomer creates a new customer in the database
 func CreateCustomer(customer *models.Customer) error {
-    collection := GetCollection("customers")
+    collection := utils.GetCollection("customers")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 
@@ -22,7 +23,7 @@ func CreateCustomer(customer *models.Customer) error {
 
 // GetCustomerByID retrieves a customer by their ID
 func GetCustomerByID(id string) (*models.Customer, error) {
-    collection := GetCollection("customers")
+    collection := utils.GetCollection("customers")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 
@@ -37,7 +38,7 @@ func GetCustomerByID(id string) (*models.Customer, error) {
 
 // UpdateCustomer updates an existing customer in the database
 func UpdateCustomer(id string, updatedCustomer *models.Customer) error {
-    collection := GetCollection("customers")
+    collection := utils.GetCollection("customers")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 
@@ -57,7 +58,7 @@ func UpdateCustomer(id string, updatedCustomer *models.Customer) error {
 
 // DeleteCustomer deletes a customer from the database
 func DeleteCustomer(id string) error {
-    collection := GetCollection("customers")
+    collection := utils.GetCollection("customers")
     ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
     defer cancel()
 

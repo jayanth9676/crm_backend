@@ -3,8 +3,8 @@ package controllers
 import (
     "net/http"
     "github.com/gin-gonic/gin"
-    "your_project/models"
-    "your_project/utils"
+    "crm_backend/models"
+    "crm_backend/utils"
 )
 
 func CreateCustomer(c *gin.Context) {

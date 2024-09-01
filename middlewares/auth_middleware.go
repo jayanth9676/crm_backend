@@ -5,7 +5,7 @@ import (
     "strings"
 
     "github.com/gin-gonic/gin"
-    "your_project/utils"
+    "crm_backend/utils"
 )
 
 // AuthMiddleware checks for a valid authentication token

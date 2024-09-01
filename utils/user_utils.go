@@ -7,7 +7,7 @@ import (
 
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/bson/primitive"
-    "your_project/models"
+    "models"
 )
 
 // CreateUser creates a new user in the database

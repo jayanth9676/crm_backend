@@ -1,8 +1,8 @@
 package main
 
 import (
-	"your_project/routes"
-	"your_project/config"
+	"routes"
+	"config"
 )
 
 func main() {
